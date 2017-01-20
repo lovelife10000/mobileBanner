@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>移动端轮播</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <script src="./js/zepto.js"></script>
+</head>
+
+<body>
+    <!--banner -->
+    <div class="banner">
+        <div class="img">
+            <ul class="clearfix">
+                <li class="">
+                    <a href="javascript:void(0)"><img src="./images/banner-1.jpg" alt=""></a>
+                </li>
+                <li class="">
+                    <a href="javascript:void(0)"><img src="./images/banner-2.jpg" alt=""></a>
+                </li>
+                <li class="">
+                    <a href="javascript:void(0)"><img src="./images/banner-3.jpg" alt=""></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--banner End -->
+    <script src="./js/zepto.banner.js"></script>
+    <script>
+    var bannerHeight;
+    var bannerWidth;
+    var deviceWidth;
+    calculateBannerWidthAndHeight();
+    $('.banner .img').css({
+        'height': bannerHeight + 'px'
+    });
+
+    function calculateBannerWidthAndHeight() {
+        deviceWidth = $(window).width();
+        bannerWidth = deviceWidth;
+        bannerHeight = deviceWidth * 362 / 750;
+    }
+
+    $(window).resize(function() {
+        calculateBannerWidthAndHeight();
+        $('.banner .img').css({
+            'height': bannerHeight + 'px'
+        });
+
+
+    });
+    </script>
+    <script>
+    $(".banner").banner({
+        isBtn: false, //是否有左右按钮
+        isAutoMove: true, //是否自动滑动
+        autoMoveTime: 4000,
+        nextImgSpeed: 500, //轮播切换快慢
+        numStyle: false, //num是否需要数字    
+        bannerWidth: bannerWidth, //banner的宽度      
+    });
+    </script>
+</body>
+
+</html>
